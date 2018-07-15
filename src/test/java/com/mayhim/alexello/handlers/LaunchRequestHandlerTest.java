@@ -3,24 +3,21 @@
  */
 package com.mayhim.alexello.handlers;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static com.mayhim.alexello.handlers.LaunchRequestHandler.speechText;
+import static com.mayhim.alexello.handlers.LaunchRequestHandler.SPEECH_TEXT;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.model.LaunchRequest;
 import com.amazon.ask.model.RequestEnvelope;
-import com.amazon.ask.model.ui.SimpleCard;
 
 /**
  * @author hkansal
  *
  */
-class LaunchRequestHandlerTest {
+class LaunchRequestHandlerTest extends AbstractHandlerTest {
 
 	private LaunchRequestHandler handler = new LaunchRequestHandler();
 	
@@ -49,10 +46,7 @@ class LaunchRequestHandlerTest {
 	 */
 	@Test
 	void testHandle() {
-		assertThat(
-				((SimpleCard) handler.handle(input).get().getCard())
-					.getContent(), 
-				is(equalTo(speechText)));
+		assertThatHandlerHandles(handler, input, SPEECH_TEXT);
 	}
 
 }
