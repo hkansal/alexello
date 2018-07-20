@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.model.LaunchRequest;
-import com.amazon.ask.model.RequestEnvelope;
 
 /**
  * @author hkansal
@@ -25,12 +24,7 @@ class LaunchRequestHandlerTest extends AbstractHandlerTest {
 	
 	@BeforeEach
 	private void initiateHandlerInput() {
-		input = HandlerInput.builder()
-				.withRequestEnvelope(
-						RequestEnvelope.builder().withRequest(
-								LaunchRequest.builder().build())
-						.build())
-				.build();
+		input = buildIntentByIntentType(LaunchRequest.builder().build());
 	}
 	
 	/**
